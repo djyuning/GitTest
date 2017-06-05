@@ -1,0 +1,18 @@
+# 可通过 gitignore 忽略不需要纳入版本的文件或目录
+
+# 排除系统文件
+.DS_store 
+
+# 编辑器配置
+.idea/
+
+# 临时的日志和错误文件
+*.log
+*.lock
+
+# 项目开发依赖
+node_modules/
+
+# 项目构建输出和缓存
+dist/
+release/
