@@ -20,10 +20,21 @@ $ git clone projectName https://github.com/djyuning/GitTest.git
 # 拉取远程代码
 # git pull 等于 git fetch && git merge
 $ git pull
+
+# 添加文件
+# . 可以添加所有更改，但可能也是不需要变动的更改
+$ git add .
+# 可以添加目录下的更改
+$ git add ./design
+
+# 提交更改
+$ git commit -m "修改了文件，新增了文件"
+
+# 提交所有更改到远程
+$ git push -u origin
 ```
 
 ## 分支操作
-
 ```bash
 # 查看现有分支
 $ git branch
