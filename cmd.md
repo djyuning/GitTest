@@ -63,3 +63,29 @@ $ git log --oneline --graph
 # 更新合并到的代码
 $ git push -u origin master
 ```
+
+# 标签管理
+```bash
+# 查看现有标签
+$ git tag
+
+# 从当前分支创建标签
+$ git tag -a v1.0.2
+# 从指定版本号创建 tag
+$ git tag -a v1.0.2 54e22ff -m "从指定版本号创建 tag"
+
+# 删除指定标签
+$ git tag -d v1.0.2
+
+# 查看创建的版本信息
+$ git show 1.0.2
+
+# 推送本地标签到远程仓库
+$ git push origin --tags
+
+# 删除标签
+# 这只是删除了本地的比钱
+$ git tag -d 1.0.3
+# 如果希望删除远程标签，可以使用下面的命令
+$ git push origin :refs/tags/1.0.3
+```
