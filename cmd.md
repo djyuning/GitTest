@@ -80,6 +80,13 @@ $ git merge dev
 $ git log --oneline --graph
 # 更新合并到的代码
 $ git push -u origin master
+
+# 变基
+# 除了使用 merge 合并两个分支，还可以使用 rebase 变基
+# 首先，切换到落后的分支
+$ git chekout djyuning
+# 执行变基命令
+$ git rebase master
 ```
 
 # 标签管理
