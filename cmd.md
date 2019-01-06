@@ -29,7 +29,7 @@ $ git push origin dev
 $ git branch -d dev
 
 # 删除远程分支
-$ git branch -d origin/dev
+$ git push -u origin -d dev
 
 # 把 dev 分支的更改合并到 master 分支
 # 首先确保 dev 的所有更改已提交
