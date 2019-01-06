@@ -49,6 +49,13 @@ $ git checkout -b master
 # 3b92cd3 是当前分支的某个提交节点
 $ git checkout -b 3b92cd3
 
+# 从指定分支创建分支
+# 首先切换到指定分支
+$ git checkout dev
+# 创建新分支
+$ git checkout -b djyuning
+# 上面就是从 dev 分支创建了一个 djyuning 分支
+
 # 发布本地 dev 分支
 # 发布成功后，远程仓库可以看到新发布的分支
 # 当前分支做了修改，也可以使用该命令提交更新内容
