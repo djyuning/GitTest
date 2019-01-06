@@ -2,6 +2,26 @@
 
 > 常用 git 命令汇总
 
+## 基础操作
+```bash
+# 初始化 git 仓库
+# 如果不输入仓库名，则在当前命令执行的目录创建 .git
+$ git init
+# 如果指定了仓库，则创建指定的目录
+$ git init projectName
+
+# 克隆远程仓库到本地
+# 远程仓库托管服务商如 github.com、coding.net 等
+# 如果不指定项目名称，则使用远程仓库的默认名称
+$ git clone https://github.com/djyuning/GitTest.git
+# 如果指定了项目名称，则创建指定目录并把远程代码克隆到新建的目录
+$ git clone projectName https://github.com/djyuning/GitTest.git
+
+# 拉取远程代码
+# git pull 等于 git fetch && git merge
+$ git pull
+```
+
 ## 分支操作
 
 ```bash
@@ -13,7 +33,7 @@ $ git branch
 $ git branch dev
 
 # 除了上面的直接新建分支，还可以从提交节点等创建分支
-# 切换（如不存在则创建）到分支
+# 创建并切换到分支
 $ git checkout -b master
 # 3b92cd3 是当前分支的某个提交节点
 $ git checkout -b 3b92cd3
