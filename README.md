@@ -4,4 +4,4 @@ GitHUB 学习。通过一个小案例，来学习如何使用 GitHub 进行代�
 
 ## git pull
 
-This text edit on CentOS, and cmmit with Git;该命令用于从远程仓库获取更新内容。
+This text edit on CentOS, and cmmit with Git; 该命令用于从远程仓库获取更新内容。
