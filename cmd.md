@@ -89,7 +89,26 @@ $ git chekout djyuning
 $ git rebase master
 ```
 
-# 标签管理
+## 分支快速同步
+我有一个仓库，其中有 2 个分支，master（同 A），dev（同 B），为了不影响业务，我在 dev 上做修改，这些修改不是简单的增加和移除内容，而是 rebase 操作，如：合并一些冗余的 commit、修改 commit 信息等，这会直接导致 dev 的 commit 节点被修改，如果直接在 master 上使用 rebase，就会出现代码冲突解决的问题，如果修改的内容多，这个过程会很繁琐，也很容易出错。所以，最后的办法是，把 master 回归到某个初始状态 —— 让 dev 为最新代码，这样就不会存在代码冲突了。
+```bash
+# 切换到 A
+$ git checkout A
+
+# 切换到 B 的过去的代码，54e22ff 是 A 和 B 共同的一个过去节点
+$ git reset --hard 54e22ff
+
+# 变基操作
+$ git rebase B
+
+# 查看修改
+$ git log --oneline
+
+# 提交到远程
+$ git push origin -f
+```
+
+## 标签管理
 ```bash
 # 查看现有标签
 $ git tag
@@ -176,4 +195,41 @@ s 4081bf6	新增合并多次commit描述
 # This is a combination of 4 commits.
 # The first commit’s message is:
 ······略
+```
+
+## 修改 commit 信息
+如果 commit 的信息有错别字或需要增加 description 信息，可以使用 rebase 操作实现。
+```bash
+# 列出所有提交记录
+$ git log --oneline
+
+# 选择需要调整的前几条数据，如：前三条
+$ git rebase -i HEAD~3
+# 输出
+pick 6922ba8	新增针对 rebase 的强调备注信息
+pick bfd2d26	预添加代码
+pick 4081bf6	新增合并多次commit描述
+
+# 按 i 进入编辑模式，修改列表中的 pick 为 edit 或 e
+# 如果不需要修改，则保持 pick
+e 6922ba8	新增针对 rebase 的强调备注信息
+e bfd2d26	预添加代码
+e 4081bf6	新增合并多次commit描述
+
+# 按 esc，然后输入 :wq 退出编辑模式，系统会弹出提示
+# 提示中的 git commit --amend 是修正提交信息的意思
+$ git commit --amend
+
+# 输入完成会进入修改提示界面
+# 按下 i 进入编辑模式，修改信息
+# 注意：如果需要使用 title 和 description，可以输入消息时隔行输入：
+# 按下 esc，输入 :wq 退出编辑模式
+# 继续操作，依次完成所有修改
+$ git rebase --continue
+
+# 确认修改完成
+$ git log --oneline
+
+# 提交到远程
+$ git push origin -f
 ```
